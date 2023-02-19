@@ -24,7 +24,7 @@ public class CalculatorDemo {
         if(strArray.length != 2) {
             throw new InputException("Формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
         }
-        strArray[0] = strArray[0].replaceAll("\\s", "");
+        strArray[0] = strArray[0].replaceAll("\\s", ""); // Убираем пробелы в операндах
         strArray[1] = strArray[1].replaceAll("\\s", "");
         if(Rome.isRome(strArray[0]) && Rome.isRome(strArray[1])){
             a = Rome.changeToArab(strArray[0]);
@@ -44,7 +44,7 @@ public class CalculatorDemo {
             throw new InputException("Числа не должны быть больше 10!");
         }
         int arab = calc(a, b, operator);
-        if (isRome) {
+        if (isRome) { //проверка на отрицательные римские числа
             if (arab <= 0){
                 throw new InputException("В римской системе нет oтрицательных чисел");
             }
@@ -56,7 +56,7 @@ public class CalculatorDemo {
         return result;
     }
 
-    public static int calc(int arg1, int arg2, String arg3){
+    public static int calc(int arg1, int arg2, String arg3){ // Считаем
         if  (arg3.equals("+")) return arg1 + arg2;
         else if (arg3.equals("-")) return arg1 - arg2;
         else if (arg3.equals("*")) return arg1 * arg2;
@@ -65,7 +65,7 @@ public class CalculatorDemo {
     }
 
 
-    public static String detectOperator(String input) {
+    public static String detectOperator(String input) { // Определяем что за оператор введен
         if (input.contains("+")) return "+";
         else if (input.contains("-")) return "-";
         else if (input.contains("*")) return "*";
